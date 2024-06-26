@@ -70,7 +70,7 @@ class ErroreDataNonValida(Exception):
 class Data:
     def __init__(self, data_str):
         if not self._valida_formato_data(data_str):
-            raise ErroreDataNonValida("Formato data non valido. Usa gg.mm.aaaa.")
+            raise ErroreDataNonValida("Formato data non valido. Usa il formato gg.mm.aaaa.")
         self.data_str = data_str
 
     def __str__(self):
@@ -140,6 +140,25 @@ print(db)
 #Context Managers for File Handling: Use the with statement and context managers to open and close a file. 
 # Handle potential IOError within the with block for clean resource management.
 
+def read_file(file_path):
+    try:
+        with open(file_path, 'r') as file:
+            content = file.read()
+            print(content)
+    except IOError as e:
+        print(f"An IOError occurred: {e}")
+
+def write_file(file_path, content):
+    try:
+        with open(file_path, 'w') as file:
+            file.write(content)
+            print("Write operation successful.")
+    except IOError as e:
+        print(f"An IOError occurred: {e}")
+
+# esempio di utilizzo:
+read_file('example.txt')
+write_file('example.txt', 'This is an example content.')
 
 
 
@@ -148,6 +167,17 @@ print(db)
 #Try to convert the first and third inputs to a float (like so: float_value = float(str_value)). Catch any ValueError that occurs, and instead raise a FormulaError.
 # If the second input is not '+' or '-', again raise a FormulaError
 #If the input is valid, perform the calculation and print out the result. The user is then prompted to provide new input, and so on, until the user enters quit.
+
+
+
+
+
+
+
+
+
+
+
 
 #Personalized math library: Create a Python library that provides functions for handling fractions, with built-in error handling. The library must include functions for the following operations:
         #Create a fraction from the numerator and denominator.
