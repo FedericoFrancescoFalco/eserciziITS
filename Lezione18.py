@@ -169,7 +169,32 @@ write_file('example.txt', 'This is an example content.')
 #If the input is valid, perform the calculation and print out the result. The user is then prompted to provide new input, and so on, until the user enters quit.
 
 
+class DateDatabase:
+    def __init__(self):
+        self.dates = []
 
+    def add_date(self, date):
+        self.dates.append(date)
+    
+    def delete_date(self, date):
+        if date in self.dates:
+            self.dates.remove(date)
+    
+    def modify_date(self, old_date, new_date):
+        if old_date in self.dates:
+            index = self.dates.index(old_date)
+            self.dates[index] = new_date
+    
+    def query_date(self, date):
+        return date in self.dates
+ 
+db = DateDatabase()
+db.add_date("12.06.2023")
+print(db.query_date("12.06.2023"))
+db.modify_date("12.06.2023", "13.06.2023")
+print(db.query_date("13.06.2023"))
+db.delete_date("13.06.2023")
+print(db.query_date("13.06.2023"))  
 
 
 
